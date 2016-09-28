@@ -28,36 +28,39 @@ if(e.keyCode==13){
 }); 
 
 	
-	var Human = {
-		name: "Jhon",
-		age: 25,
-		sex: "man",
-		growth: 1750,
-		weight: 78
+	function Human() {
+		this.name = "Jhon";
+		this.age = 25;
+		this.sex = "man";
+		this.growth = 1750;
+		this.weight = 78;
 	};
 	
 	
-	var worker = {
-		job: "Google",
-		salary: 1500
+	function Worker() {
+		this.working = function () {
+		Worker.job = "Google";
+		this.salary = 1500;			
+		}
 	};
-    worker.__proto__ = Human;
 	
-	var Student = new Object();
+    Worker.prototype = new Human;
 	
-	Student.study = "university";
-	Student.grants = 300;	
-    Student.__proto__ = Human;
+	function Student() {
+		this.watchSerials = function () {
+		this.study = "university";
+		this.grants = 300;			
+		}
+	};	
 	
-	var worker1 = {};
-    for (var key in worker) {
-        worker1[key] = worker[key];
-    };
+	Student.prototype = new Human;
 	
-	var Student1 = {};
-    for (var key in Student) {
-        Student1[key] = Student[key];
-    };	
+	var worker1 = new Worker();	
+	var student1 = new Student();
+	var worker2 = new Worker();	
+	var student2 = new Student();	
 
-    console.log(worker1);
-    console.log(Student1);
+	console.log(worker2);
+    console.log(student2);
+    console.log(worker2.name);
+    console.log(student2.age);
